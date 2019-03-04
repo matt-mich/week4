@@ -2,14 +2,16 @@
 var passport = require('passport');
 var ExtractJwt = require('passport-jwt').ExtractJwt;
 
-var opts = {};
-opts.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme("jwt");
-opts.secretOrKey = process.env.UNIQUE_KEY;
-
+var options = {};
 var JwtStrategy = require('passport-jwt').Strategy;
 
+options.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme("jwt");
+//options.secretOrKey = process.env.UNIQUE_KEY;
 
-passport.use(new JwtStrategy(opts, function(jwt_payload, done) {
+options.secretOrKey = "TEST KEY";
+
+
+passport.use(new JwtStrategy(options, function(jwt_payload, done) {
         var user = db.find(jwt_payload.id);
 
         if (user) {
