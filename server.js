@@ -20,24 +20,6 @@ app.use(passport.initialize());
 
 var router = express.Router();
 
-function getJSONObject(req) {
-    var json = {
-        headers : "No Headers",
-        key: process.env.UNIQUE_KEY,
-        body : "No Body"
-    };
-
-    if (req.body != null) {
-        json.body = req.body;
-    }
-    if (req.headers != null) {
-        json.headers = req.headers;
-    }
-
-    return json;
-}
-
-
 // Signup
 router.route('/signup')
     .post( function(req, res) {
@@ -168,5 +150,3 @@ router.route('/movies')
 
 app.use('/', router);
 app.listen(process.env.PORT || 8080);
-
-module.exports = app; // for testing
