@@ -148,4 +148,4 @@ router.route('/movies')
 
 
 app.use('/', router);
-module.exports = app; // for testing
+app.listen(process.env.PORT || 8080);

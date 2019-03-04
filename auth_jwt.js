@@ -1,12 +1,12 @@
 // Load required packages
 var passport = require('passport');
 var ExtractJwt = require('passport-jwt').ExtractJwt;
-
-var options = {};
 var JwtStrategy = require('passport-jwt').Strategy;
 
+var options = {};
 options.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme("JWT");
-options.secretOrKey = process.env.UNIQUE_KEY;
+//options.secretOrKey = process.env.UNIQUE_KEY;
+options.secretOrKey = "test";
 
 
 passport.use(new JwtStrategy(options, function(jwt_payload, done) {
@@ -19,5 +19,5 @@ passport.use(new JwtStrategy(options, function(jwt_payload, done) {
         }
 }));
 
-exports.isAuthenticated = passport.authenticate('jwt', { session : false });
+exports.isAuthenticated = passport.authenticate('JWT', { session : false });
 exports.secret = options.secretOrKey ;
