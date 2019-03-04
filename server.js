@@ -1,7 +1,6 @@
 // Base code from https://github.com/shawnmccarthy/week4
 
 var express = require('express');
-var http = require('http');
 var bodyParser = require('body-parser');
 var passport = require('passport');
 var authJwtController = require('./auth_jwt');
